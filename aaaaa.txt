@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You ❤️</title>
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ff8fcf, #ffc0e6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+.hearts {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.heart {
+  position: absolute;
+  animation: float 6s infinite ease-in;
+}
+
+@keyframes float {
+  0% { transform: translateY(100vh); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: translateY(-10vh); opacity: 0; }
+}
+
+.container {
+  text-align: center;
+  background: rgba(255,255,255,0.25);
+  padding: 35px;
+  border-radius: 25px;
+  backdrop-filter: blur(10px);
+  max-width: 90%;
+}
+
+button {
+  background: #ff3d8b;
+  border: none;
+  padding: 15px 35px;
+  font-size: 18px;
+  border-radius: 30px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #ff176f;
+  transform: scale(1.05);
+}
+
+video {
+  display: none;
+  margin-top: 20px;
+  max-width: 100%;
+  border-radius: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="hearts" id="hearts"></div>
+
+<div class="container">
+  <h2>❤️ Sretan Valentinovo ❤️</h2>
+  <p>Imam nešto posebno za tebe</p>
+  <button onclick="showVideo()">Click me 💕</button>
+  <br>
+  <video id="video" controls>
+    <source src="video.mov" type="video/mp4">
+  </video>
+</div>
+
+<script>
+function showVideo() {
+  const v = document.getElementById("video");
+  v.style.display = "block";
+  v.play();
+}
+
+for (let i = 0; i < 35; i++) {
+  let heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDelay = Math.random() * 5 + "s";
+  heart.style.fontSize = (18 + Math.random() * 25) + "px";
+  document.getElementById("hearts").appendChild(heart);
+}
+</script>
+
+</body>
+</html>
+
